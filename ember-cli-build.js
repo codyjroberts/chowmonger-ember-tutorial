@@ -6,7 +6,8 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     sassOptions: {
       includePaths: [
-        'bower_components/bourbon/app/assets/stylesheets'
+        'bower_components/bourbon/app/assets/stylesheets',
+        'bower_components/neat/app/assets/stylesheets'
       ]
     }
   });
