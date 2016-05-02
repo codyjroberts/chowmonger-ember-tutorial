@@ -1,0 +1,10 @@
+{{#leaflet-map lat=lat lng=lng zoom=zoom dragging=true zoomControl=false}}
+  {{tile-layer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"}}
+  {{#each model as |truck|}}
+    {{#marker-layer lat=truck.lat lng=truck.lng}}
+      {{truck.name}}
+    {{/marker-layer}}
+  {{/each}}
+{{/leaflet-map}}
+
+{{outlet}}
