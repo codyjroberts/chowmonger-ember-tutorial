@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   name: DS.attr(),
@@ -8,6 +9,7 @@ export default DS.Model.extend({
   menu: DS.attr('array'),
   categories: DS.attr('array'),
   status: DS.attr(),
+  user: DS.belongsTo('truck'),
   address: null,
 
   addressChanged: Ember.on('init', Ember.observer('lat', 'lng', function() {

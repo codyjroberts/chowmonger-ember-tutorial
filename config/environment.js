@@ -30,9 +30,11 @@ module.exports = function(environment) {
       'connect-src': ["'self'", "http://localhost:4000"]
     },
     ENV['simple-auth'] = {
-      authorizer: 'authorizer:jwt',
-      routerAfterAuthentication: 'map',
-      routeIfAlreadyAuthenticated: 'map'
+      authorizer: 'authorizer:custom',
+      crossOriginWhitelist: ['http://localhost:4000/'],
+      authenticationRoute: 'map.panel.settings',
+      routeAfterAuthentication: 'map.panel.settings',
+      routeIfAlreadyAuthenticated: 'map.panel.settings'
     }
   }
 
