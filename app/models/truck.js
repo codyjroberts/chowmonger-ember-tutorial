@@ -13,7 +13,7 @@ export default DS.Model.extend({
   address: null,
 
   addressChanged: Ember.on('init', Ember.observer('lat', 'lng', function() {
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.get('lat')},${this.get('lng')}&key=AIzaSyAynQTnvqd6_PdtsnUJ-nO1nBzn2aJqbws`;
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.get('lat')},${this.get('lng')}&key=YOUR_KEY_HERE`;
     var self = this;
 
     new Ember.RSVP.Promise(function(resolve, reject) {
