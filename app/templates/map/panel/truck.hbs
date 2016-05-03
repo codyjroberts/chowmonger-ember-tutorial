@@ -1,0 +1,41 @@
+<div class="pane">
+  <div class="truck-pane-image">
+    <img src={{model.image}}>
+  </div>
+  <div class="truck-pane-title">
+    <h1>{{model.name}}</h1>
+  </div>
+  <div class="truck-pane-info">
+    <ul>
+      <li><i class="fa fa-clock-o"></i>
+      <span>
+      {{#if model.status}}
+        Open
+      {{else}}
+        Closed
+      {{/if}}
+      </span>
+      </li>
+      <li><i class="fa fa-cutlery"></i>
+      <span>
+        {{#each model.categories as |c index|}}
+          {{if index ", "}}{{c}}
+        {{/each}}
+      </span>
+      </li>
+      <li><i class="fa fa-map-marker"></i>
+      <span>{{model.address}}</span>
+      </li>
+    </ul>
+  </div>
+  {{#if model.menu}}
+  <div class="truck-pane-menu-title">
+    <h1>Menu</h1>
+  </div>
+  <div class="truck-pane-menu">
+    {{#each model.menu as |m|}}
+      <h1>{{m}}</h1>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>

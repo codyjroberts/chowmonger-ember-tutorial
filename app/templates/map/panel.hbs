@@ -1,0 +1,29 @@
+<div class="panel">
+  <div id="cog">
+    <i class="fa fa-cog"></i>
+  </div>
+  <div id="search">
+    {{input focus-in='focused' escape-press='clearName' value=name id="sb" placeholder="Feed me..."}}
+  </div>
+  <div class="search-icon-container">
+    <i class="search-icon fa fa-times" {{action 'clearName'}}></i>
+  </div>
+  <div id="results-box">
+    <div id="results">
+      <ul>
+        {{#each model as |t|}}
+        <li>
+          <div class="result-container">
+            <i class="result-icon fa fa-heart-o"></i>
+            {{#link-to 'map.panel.truck' t.id (query-params name="")}}
+              <div class="result">{{t.name}}</div>
+            {{/link-to}}
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{{outlet}}

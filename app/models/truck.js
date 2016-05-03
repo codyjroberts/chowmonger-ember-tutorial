@@ -7,5 +7,26 @@ export default DS.Model.extend({
   image: DS.attr(),
   menu: DS.attr('array'),
   categories: DS.attr('array'),
-  status: DS.attr()
+  status: DS.attr(),
+  address: null,
+
+  addressChanged: Ember.on('init', Ember.observer('lat', 'lng', function() {
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.get('lat')},${this.get('lng')}&key=AIzaSyAynQTnvqd6_PdtsnUJ-nO1nBzn2aJqbws`;
+    var self = this;
+
+    new Ember.RSVP.Promise(function(resolve, reject) {
+      Ember.$.ajax(url, {
+        success: function(response) {
+          resolve(response.results[0].formatted_address);
+        },
+        error: function(reason) {
+          reject(reason);
+        }
+      });
+    }).then(function(response) {
+      self.set('address', response);
+    });
+
+    return "calculating...";
+  }))
 });
