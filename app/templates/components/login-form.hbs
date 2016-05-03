@@ -1,0 +1,18 @@
+{{#unless session.isAuthenticated}}
+<div class="login">
+<form {{action 'authenticate' on='submit'}}>
+  {{input value=identification placeholder='Email'}}
+  <span class="fa fa-envelope input-icon"></span>
+  {{input value=password placeholder='Password' type='password'}}
+  <span class="fa fa-key input-icon"></span>
+  <button type="submit">Login
+    <span class="fa fa-sign-out button-icon"></span>
+  </button>
+</form>
+</div>
+{{else}}
+<div class="account">
+  <i class="fa fa-user"></i>{{sessionAccount.currentUser.name}}
+  <i class="fa fa-sign-out float-right" {{action 'invalidateSession'}}></i>
+</div>
+{{/unless}}

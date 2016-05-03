@@ -1,6 +1,8 @@
 <div class="panel">
   <div id="cog">
-    <i class="fa fa-cog"></i>
+    {{#link-to 'map.panel.settings' (query-params name="")}}
+      <i class="fa fa-cog"></i>
+    {{/link-to}}
   </div>
   <div id="search">
     {{input focus-in='focused' escape-press='clearName' value=name id="sb" placeholder="Feed me..."}}
