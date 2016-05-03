@@ -10,7 +10,7 @@
       {{/marker-layer}}
     {{else}}
       {{#marker-layer lat=truck.lat lng=truck.lng 
-        onClick=(action 'viewTruck' truck.id)
+        onClick=(action 'viewTruck' truck.id }}
         {{truck.name}}
       {{/marker-layer}}
     {{/if}} 
