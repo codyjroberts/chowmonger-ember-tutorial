@@ -1,10 +1,19 @@
 {{#leaflet-map lat=lat lng=lng zoom=zoom dragging=true zoomControl=false}}
   {{tile-layer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"}}
+
   {{#each model as |truck|}}
-    {{#marker-layer lat=truck.lat lng=truck.lng
-                    onClick=(action 'viewTruck' truck.id)}}
-      {{truck.name}}
-    {{/marker-layer}}
+    {{#if session.isAuthenticated}}
+      {{#marker-layer lat=truck.lat lng=truck.lng draggable=true
+        onClick=(action 'viewTruck' truck.id)
+        onDragend=(action "updateLocation" truck)}}
+        {{truck.name}}
+      {{/marker-layer}}
+    {{else}}
+      {{#marker-layer lat=truck.lat lng=truck.lng 
+        onClick=(action 'viewTruck' truck.id)
+        {{truck.name}}
+      {{/marker-layer}}
+    {{/if}} 
   {{/each}}
 {{/leaflet-map}}
 

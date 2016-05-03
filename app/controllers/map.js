@@ -9,6 +9,13 @@ export default Ember.Controller.extend({
   actions: {
     viewTruck(id) {
       this.transitionToRoute('map.panel.truck', id);
+    },
+    updateLocation(truck, e) {
+      let location = e.target.getLatLng();
+      console.log(location);
+      truck.set('lat', location.lat);
+      truck.set('lng', location.lng);
+      truck.save();
     }
   }
 });
